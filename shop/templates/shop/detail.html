@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+{% load thumbnail %}
+{% load ratings %}
+
+
+{% block categoryblock %}
+	{% for category in categories %}
+		<a href="{% url 'shop:category' category.slug %}" class="list-group-item">{{ category.name }}</a>
+	{% endfor %}
+{% endblock %}
+
+
+{% block productblock %}
+  <!--Section: Block Content-->
+<section class="mb-5">
+
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+
+      <div id="mdb-lightbox-ui"></div>
+
+      <div class="mdb-lightbox">
+
+        <div class="row product-gallery mx-1">
+
+          <div class="col-12 mb-0">
+            <figure class="view overlay rounded z-depth-1 main-img">
+              <a href="{{ product.image.url }}"
+                data-size="710x823">
+                <img src="{{ product.image.url }}"
+                  class="img-fluid z-depth-1">
+              </a>
+              <br/><br/>
+              <h3>Comments:</h3>
+              {% if reviews.all %}
+                {% with reviews.all|first as review %}
+                  <p id="comment" class="card-text">"{{ review.review }}"</p>
+                {% endwith %}
+              {% else %}
+                <p class="card-text">No reviews available</p>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <h5>{{ product.name }}</h5>
+      <p class="mb-2 text-muted text-uppercase small">{{ product.categories.name }}</p>
+      <p><span class="mr-1" id="price"><strong>{{ product.price }} T</strong></span></p>
+      <p class="pt-1">{{ product.description }}</p>
+      {% ratings product %}
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>نام</strong></th>
+              <td id="name">{{ product.name }}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>زبان</strong></th>
+              <td id="language">{{ product.language }}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>نویسنده</strong></th>
+              <td id="author">{{ product.author }}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>وضعیت موجودی</strong></th>
+              <td id="available">
+              	{% if product.available %}
+              		<p style="color:green;">موجود</p>
+              	{% else %}
+              		<p style="color:red;">ناموجود</p>
+              	{% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>اضافه شده در</strong></th>
+              <td>{{ product.created }}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>آخرین تغییر</strong></th>
+              <td>{{ product.updated }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">خرید</button>
+      <button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+          class="fas fa-shopping-cart pr-2"></i>اضافه به سبد خرید</button>
+    </div>
+  </div>
+
+</section>
+<!--Section: Block Content-->
+{% endblock %}

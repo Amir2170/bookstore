@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load thumbnail %}
+{% load ratings %}
+
+
+{% block categoryblock %}
+  <a href="{% url 'shop:category' main_category.slug %}" class="list-group-item">{{ main_category.name }}</a>
+  {% if sub_categories %}
+  	{% for category in sub_categories %}
+  		<a href="{% url 'shop:category' category.slug %}" class="list-group-item">{{ category.name }}</a>
+  	{% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block productblock %}
+	{% for product in products %}
+		 <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+             	{% thumbnail product.image "300x300" as img %}
+	            	<img src="{{ img.url }}" class="card-img-top">
+	            {% endthumbnail %}
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{% url 'shop:detail' product.id %}">{{ product.name }}</a>
+                </h4>
+                <h5>{{ product.price }} T</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+              </div>
+              <div class="card-footer">
+                {% ratings product %}
+              </div>
+            </div>
+          </div>
+    {% endfor %}
+{% endblock %}
