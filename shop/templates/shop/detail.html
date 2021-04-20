@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load i18n %}
 {% load thumbnail %}
 {% load ratings %}
 
@@ -31,7 +32,7 @@
                   class="img-fluid z-depth-1">
               </a>
               <br/><br/>
-              <h3>Comments:</h3>
+              <h3>{% translate "Comments:" %}</h3>
               {% if reviews.all %}
                 {% with reviews.all|first as review %}
                   <p id="comment" class="card-text">"{{ review.review }}"</p>
@@ -54,42 +55,42 @@
         <table class="table table-sm table-borderless mb-0">
           <tbody>
             <tr>
-              <th class="pl-0 w-25" scope="row"><strong>نام</strong></th>
+              <th class="pl-0 w-25" scope="row"><strong>{% translate "name" %}</strong></th>
               <td id="name">{{ product.name }}</td>
             </tr>
             <tr>
-              <th class="pl-0 w-25" scope="row"><strong>زبان</strong></th>
+              <th class="pl-0 w-25" scope="row"><strong>{% translate "language" %}</strong></th>
               <td id="language">{{ product.language }}</td>
             </tr>
             <tr>
-              <th class="pl-0 w-25" scope="row"><strong>نویسنده</strong></th>
+              <th class="pl-0 w-25" scope="row"><strong>{% translate "author" %}</strong></th>
               <td id="author">{{ product.author }}</td>
             </tr>
             <tr>
-              <th class="pl-0 w-25" scope="row"><strong>وضعیت موجودی</strong></th>
+              <th class="pl-0 w-25" scope="row"><strong>{% translate "availabe" %}</strong></th>
               <td id="available">
               	{% if product.available %}
-              		<p style="color:green;">موجود</p>
+              		<p style="color:green;">{% translate "is available" %}</p>
               	{% else %}
-              		<p style="color:red;">ناموجود</p>
+              		<p style="color:red;">{% translate "is not available" %}</p>
               	{% endif %}
               </td>
             </tr>
             <tr>
-              <th class="pl-0 w-25" scope="row"><strong>اضافه شده در</strong></th>
+              <th class="pl-0 w-25" scope="row"><strong>{% translate "added" %}</strong></th>
               <td>{{ product.created }}</td>
             </tr>
             <tr>
-              <th class="pl-0 w-25" scope="row"><strong>آخرین تغییر</strong></th>
+              <th class="pl-0 w-25" scope="row"><strong>{% translate "last change" %}</strong></th>
               <td>{{ product.updated }}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <hr>
-      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">خرید</button>
+      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">{% translate "buy" %}</button>
       <button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
-          class="fas fa-shopping-cart pr-2"></i>اضافه به سبد خرید</button>
+          class="fas fa-shopping-cart pr-2"></i>{% translate "adding to cart" %}</button>
     </div>
   </div>
 

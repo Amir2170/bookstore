@@ -1,18 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from phonenumber_field.modelfields import PhoneNumberField
+from django.utils.translation import gettext_lazy as _
 
 from .managers import CustomUserManager
 
 
 class CustomUser(AbstractBaseUser):
 	email = models.EmailField(
-			verbose_name='آدرس ایمیل',
+			verbose_name=_('email'),
 			max_length=255,
 			unique=True,
 			)
-	phone = PhoneNumberField(verbose_name='شماره تلفن')
-	name = models.CharField(verbose_name='اسم', max_length=100)
+	phone = PhoneNumberField(verbose_name=_('phone number'))
+	name = models.CharField(verbose_name=_('name'), max_length=100)
 
 	is_active = models.BooleanField(default=True)
 	is_admin = models.BooleanField(default=False)

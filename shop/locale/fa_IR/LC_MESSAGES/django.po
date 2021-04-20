@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-19 21:05+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: shop/models.py:23
+msgid "category"
+msgstr "دسته"
+
+#: shop/models.py:24
+msgid "categories"
+msgstr "دسته ها"
+
+#: shop/templates/shop/detail.html:35
+msgid "Comments:"
+msgstr "نظرات:"
+
+#: shop/templates/shop/detail.html:58
+msgid "name"
+msgstr "نام"
+
+#: shop/templates/shop/detail.html:62
+msgid "language"
+msgstr "زبان"
+
+#: shop/templates/shop/detail.html:66
+msgid "author"
+msgstr "نویسنده"
+
+#: shop/templates/shop/detail.html:70
+msgid "availabe"
+msgstr "موجودی"
+
+#: shop/templates/shop/detail.html:73
+msgid "is available"
+msgstr "موجود"
+
+#: shop/templates/shop/detail.html:75
+msgid "is not available"
+msgstr "ناموجود"
+
+#: shop/templates/shop/detail.html:80
+msgid "added"
+msgstr "اضافه شده"
+
+#: shop/templates/shop/detail.html:84
+msgid "last change"
+msgstr "آخرین تغییر"
+
+#: shop/templates/shop/detail.html:91
+msgid "buy"
+msgstr "خرید"
+
+#: shop/templates/shop/detail.html:93
+msgid "adding to cart"
+msgstr "اضافه به سبد خرید"

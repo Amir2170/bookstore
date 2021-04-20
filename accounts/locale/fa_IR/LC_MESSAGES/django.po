@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-19 21:05+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: accounts/forms.py:16 accounts/forms.py:61
+msgid "Password"
+msgstr "رمز عبور"
+
+#: accounts/forms.py:19
+msgid "Repeat Password"
+msgstr "تکرار رمز عبور"
+
+#: accounts/forms.py:31 accounts/forms.py:112
+msgid "passwords do not match"
+msgstr "رمز های وارد شده مطابقت ندارند"
+
+#: accounts/forms.py:59 accounts/forms.py:104
+msgid "Email"
+msgstr "ایمیل"
+
+#: accounts/forms.py:68
+msgid "password or email is incorrect note that both fields are case sensitive"
+msgstr ""
+"رمز عبور یا ایمیل اشتباه است دقت کنید هر دو فیلد حساس به حروف بزرگ و کوچک "
+"است "
+
+#: accounts/forms.py:71
+msgid "specified account is inactive"
+msgstr "اکانت مورد نظر غیرفعال است"
+
+#: accounts/forms.py:115
+msgid "New password"
+msgstr "پسورد جدید"
+
+#. Translators: This field is password repeat
+#: accounts/forms.py:121
+msgid "Repeat new password"
+msgstr "تکرار پسورد جدید"
+
+#: accounts/models.py:11
+msgid "email"
+msgstr "ایمیل"
+
+#: accounts/models.py:15
+msgid "phone number"
+msgstr "شماره تماس"
+
+#: accounts/models.py:16
+msgid "name"
+msgstr "اسم"
+
+#: accounts/templates/accounts/login.html:5
+#: accounts/templates/accounts/login.html:32
+msgid "sign in"
+msgstr "ورود"
+
+#: accounts/templates/accounts/login.html:36
+msgid "forgot password?"
+msgstr "رمز عبور را فراموش کردید؟"
+
+#: accounts/templates/accounts/signup.html:5
+#: accounts/templates/accounts/signup.html:32
+msgid "sign up"
+msgstr "ثبت نام"
+
+#: accounts/templates/registration/password_reset_complete.html:7
+#, python-format
+msgid ""
+"\n"
+"your password has changed successfully <a href=\"%(the_link)s\">click here</"
+"a> to sing in.\n"
+msgstr ""
+"\n"
+"رمز عبور شما با موفقیت تغییر کرد برای ورورد<a href=\"%(the_link)s\">اینجا</"
+"a> کلیک کنید.\n"
+
+#: accounts/templates/registration/password_reset_confirm.html:5
+#: accounts/templates/registration/password_reset_form.html:5
+msgid "changing password"
+msgstr "تغییر رمز عبور"
+
+#: accounts/templates/registration/password_reset_confirm.html:34
+#: accounts/templates/registration/password_reset_form.html:32
+msgid "submit"
+msgstr "ثبت"
+
+#: accounts/templates/registration/password_reset_done.html:6
+msgid ""
+"\n"
+"Please check your mail. You would have recieved a password reset mail from "
+"us.\n"
+"In case you haven't recieved any email you might entered the wrong "
+"password.\n"
+msgstr ""
+"\n"
+"لطفا ایمیل خود را چک کنید. ایمیل شما ارسال شد.\n"
+"در صورتی که ایمیلی برای شما ارسال نشده رمز یال ایمیل وارد شده صحیح نیست.\n"
+
+#: accounts/templates/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "لطفا به صفحه زیر مراجعه و پسورد جدیدی وارد کنید:"
+
+#: accounts/templates/registration/password_reset_email.html:8
+msgid ""
+"\n"
+"if clicking on the link above won't work please copy an paste the link into "
+"your\n"
+"browser navbar.\n"
+msgstr ""
+"\n"
+"اگر کلیک کردن روی لینک بالا شما را به صفحه مورد نظر هدایت نکرد لطفا آدرس این "
+"صفحه را کپی کرده و در نوار ناوبری مرورگر خود پیست کنید.\n"

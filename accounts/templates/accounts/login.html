@@ -2,9 +2,9 @@
 {% load i18n %}
 
 {% block page_content %}
-  <<h2 style="text-indent: 1em;">{% translate "sign up" %}</h2>
+  <<h2 style="text-indent: 1em;">{% translate "sign in" %}</h2>
   </br></br>
-  <form method="post">
+  <form action="{% url 'accounts:login' %}" method="post">
     {% csrf_token %}
     {% for field in form %}
       <p style="text-indent: 1em;">
@@ -29,6 +29,9 @@
         </div>
     {% endfor %}
 {% endif %}
-    <button type="submit">{% translate "sign up" %}</button></button>
+    <button type="submit">{% translate "sign in" %}</button>
   </form>
+  </br>
+  </br>
+  <a href="{% url 'password_reset' %}">{% translate "forgot password?" %}</a>
 {% endblock %}

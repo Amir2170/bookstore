@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
 {% load thumbnail %}
 {% load static %}
 
@@ -32,24 +32,26 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'shop:home' %}">صفحه اصلی
+            <a class="nav-link" href="{% url 'shop:home' %}">{% translate "main page" %}
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">درباره</a>
+            <a class="nav-link" href="#">{% translate "about" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">تماس با ما</a>
+            <a class="nav-link" href="#">{% translate "contact us" %}</a>
           </li>
-          {% if user.is_autheticated %}
+          {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="#">خروج</a>
+              <a class="nav-link" href="{% url 'accounts:logout' %}">{% translate "exit" %}</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'accounts:signup' %}">ثبت نام</a>
+              <a class="nav-link" href="{% url 'accounts:signup' %}">{% translate "sign up" %}</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:login' %}">{% translate "sign in" %}</a>
           {% endif %}
         </ul>
       </div>

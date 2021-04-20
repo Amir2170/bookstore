@@ -16,11 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+
 from . import settings
+from accounts import views as accounts_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('password_reset/', 
+        accounts_views.CustomPasswordResetView.as_view(), name='password_reset'
+    ),
+    path('reset/<uidb64>/<token>/', 
+        accounts_views.CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'
+    ),
+    path('', include('django.contrib.auth.urls')),
     path('', include('shop.urls', namespace='shop')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('ratings/', include('star_ratings.urls', namespace='ratings',)),
