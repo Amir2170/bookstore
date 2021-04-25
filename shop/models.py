@@ -1,8 +1,10 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.contenttypes.fields import GenericRelation
 
 from bookstore_project import settings
+from cart.models import Item
 
 
 class Category(models.Model):
@@ -32,7 +34,9 @@ class Product(models.Model):
 	categories = models.ManyToManyField(Category)
 	name = models.CharField(max_length=300)
 	slug = models.SlugField(max_length=300, unique=True)
-	image = models.ImageField(upload_to='shop/%Y/%m/%d/')
+	image = models.ImageField(upload_to='shop/%Y/%m/%d/', 
+		null=True, blank=True,
+	)
 	description = models.TextField()
 	price = models.IntegerField()
 	language = models.CharField(max_length=10, 
@@ -44,6 +48,7 @@ class Product(models.Model):
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
+	item = GenericRelation(Item)
 
 	class Meta:
 		ordering = ('name',)
