@@ -9,7 +9,9 @@ class Cart(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, 
 		null=True, blank=True
 	)
-	creation_date = models.DateTimeField(verbose_name=_('creation date'))
+	creation_date = models.DateTimeField(auto_now_add=True,
+        verbose_name=_('creation date')
+    )
 	checked_out = models.BooleanField(default=False, verbose_name=_('checked out'))
 	products = models.ManyToManyField("shop.Product", blank=True)
 

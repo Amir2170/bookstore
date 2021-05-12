@@ -89,11 +89,11 @@
       </div>
       <hr>
       <button type="button" class="btn btn-primary btn-md mr-1 mb-2">{% translate "buy" %}</button>
-      <a href="{% url 'cart:add' product.slug %}"<button type="button" class="btn btn-light btn-md mr-1 mb-2" formaction="{% url 'cart:add' product.slug %}">
+      <a href="{% url 'cart:add' product.slug %}"<button type="button" class="btn btn-light btn-md mr-1 mb-2">
         <i class="fas fa-shopping-cart pr-2"></i> {% translate "adding to cart" %}</button></a>
     </div>
+  
   </div>
-
 </section>
 <!--Section: Block Content-->
 {% endblock %}

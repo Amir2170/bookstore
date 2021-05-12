@@ -1,32 +1,67 @@
 {% extends 'index.html' %}
+{% load cart_total_price %}
 {% load i18n %}
 
 {% block page_content %}
-<table class="table table-dark">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">{% translate "Product" %}</th>
-        <th scope="col">{% translate "Price" %}</th>
-        <th scope="col">{% translate "Remove" %}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for item in cart.item %}
-    <tr>
-        <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ item.product }}</td>
-        <td>{{ item.price }}</td>
-        <td><a href="#">{% translate "Remove" %}</a></td>
-    </tr>
-    {% endfor %}
-    <tr>
-        <td>{% translate "Total" %}</td>
-        <td colspan="4"></td>
-        <td>{{ cart.total_price }}</td>
-    </tr>
-    </tbody>
-</table>
 
+{% if cart %}
+    
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">{% translate "Product" %}</th>
+            <th scope="col">{% translate "Price" %}</th>
+            <th scope="col">{% translate "Remove" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% if user.is_authenticated %}
+                
+                {% for product in cart.products.all %}
+                
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}T</td>
+                    <td><a href="#">{% translate "Remove" %}</a></td>
+                </tr>
+                
+                {% endfor %}
+                
+                <tr>
+                    <td>{% translate "Total" %}</td>
+                    <td colspan="4"></td>
+                    <td>{{ cart.total_price }}</td>
+                </tr>
+            
+            {% else %}
+                
+                {% for product_name, price_dict in cart.items %}          
+                    <tr>   
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ product_name }}</td>
+                        <td>{{ price_dict.price }}T</td>
+                        <td><a href="#">{% translate "Remove" %}</a></td>
+                    </tr>
+                {% endfor %}
+                    <tr>
+                        {% cart_total_price as total_price%}
+                        <td>{% translate "Total" %}</td>
+                        <td colspan="4"></td>
+                        <td>{{ total_price }}T</td>
+                    </tr>
+            
+            {% endif %}
+        
+        </tbody>
+    </table>
     <a href="#" class="btn btn-primary">{% translate "Checkout" %}</a>
+
+{% else %}
+
+    <p>{% translate "You're cart is empty at the moment" %}
+
+{% endif %}
+
 {% endblock %}
