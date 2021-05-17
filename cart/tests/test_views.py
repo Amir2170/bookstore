@@ -184,4 +184,62 @@ class DetailViewTest(TestCase):
         )
 
     
+
+class RemoveView(TestCase):
     
+    def _create_user_model_and_login(self, email='testuser1@gmail.com', 
+        password='testuser1'):
+        user = User.objects.create_user(email=email,
+            phone='+989211333333',
+            name='amir',
+            password=password,
+        )
+        self.client.login(email='testuser1@gmail.com', 
+            password='testuser1'
+        )
+        return user	 	 
+    
+    
+    def test_authenticated_user_removing_a_product_and_redirects_to_home(self):
+        self._create_user_model_and_login()
+        
+        product1 = _create_product_and_category_in_database(
+            product_name='product1', 
+        )    
+        self.client.post(reverse('cart:add', 
+            args=[product1.slug],), follow=True,
+        )
+        cart = Cart.objects.first()
+        
+        self.assertTrue(
+            cart.products.filter(name='product1').exists()
+        )
+        
+        response = self.client.get(reverse('cart:remove',
+            args=[product1.slug],)
+        )
+        
+        self.assertFalse(
+            cart.products.filter(name='product1').exists()
+        )
+        self.assertRedirects(response, reverse('shop:home'))
+    
+    
+    def test_unauthenticated_user_removing_a_product_and_redirects_to_home(self):
+        product1 = _create_product_and_category_in_database(
+            product_name='product1', 
+        )    
+        self.client.post(reverse('cart:add', 
+            args=[product1.slug],), follow=True,
+        )
+        session = self.client.session
+        
+        self.assertTrue(product1.slug in session['cart'])
+        
+        response = self.client.get(reverse('cart:remove', 
+            args=[product1.slug],)
+        )
+        session = self.client.session
+        
+        self.assertFalse(product1.slug in session['cart'])
+        self.assertRedirects(response, reverse('shop:home'))

@@ -24,7 +24,7 @@
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}T</td>
-                    <td><a href="#">{% translate "Remove" %}</a></td>
+                    <td><a href="{% url 'cart:remove' product.slug %}">{% translate "Remove" %}</a></td>
                 </tr>
                 
                 {% endfor %}
@@ -42,7 +42,7 @@
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ product_name }}</td>
                         <td>{{ price_dict.price }}T</td>
-                        <td><a href="#">{% translate "Remove" %}</a></td>
+                        <td><a href="{% url 'cart:remove' product_name %}">{% translate "Remove" %}</a></td>
                     </tr>
                 {% endfor %}
                     <tr>

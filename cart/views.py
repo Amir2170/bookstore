@@ -67,37 +67,22 @@ def add(request, slug):
 
 
 
-def remove(request, slug):   
-    view_messages = {
-        'uable_to_del': _('unable to delete given product')
-    }
+def remove(request, slug):
+    product = Product.objects.get(slug=slug)
     
-    if user.is_authenticated:
-        product = Product.objects.get(slug=slug)    
+    if request.user.is_authenticated:
+        cart = Cart.objects.get(user=request.user)
+        cart.products.remove(product)
+    
+    else:
+        cart = request.session.get('cart')
+        del cart[product.slug]
+        request.session.modified = True
+    
+    messages.success(request, 
+        _("Product removed successfully from your cart"))
+    
+    return redirect(reverse('shop:home'))
         
-        try: 
-            result = product.delete()
-        except Exception as e:   
-            if result == 0:
-                messages.error(request, 
-                    view_messages['unable_to_del']
-                )
-            else:
-                raise e
-    
-    else:       
-        cart = request.session['cart']
-       
-        try:
-            del cart['slug']
-        except Exception as e:
-            if e == NameError:
-                messages.error(request, 
-                    view_messages['unable_to_del']
-                )
-            else:
-                raise e
-    
-    return redirect('shop:home')
         
         
