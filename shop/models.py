@@ -36,6 +36,10 @@ class Product(models.Model):
 	image = models.ImageField(upload_to='shop/%Y/%m/%d/', 
 		null=True, blank=True,
 	)
+	upload = models.FileField(
+     	upload_to='shop/uploads/%Y/%m/%d',
+		null=True, blank=True
+    )
 	description = models.TextField()
 	price = models.DecimalField(max_digits=18, 
         decimal_places=2,

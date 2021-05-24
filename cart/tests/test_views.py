@@ -243,3 +243,4 @@ class RemoveView(TestCase):
         
         self.assertFalse(product1.slug in session['cart'])
         self.assertRedirects(response, reverse('shop:home'))
+        

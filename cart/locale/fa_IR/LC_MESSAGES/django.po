@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-17 22:06+0430\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:13
+msgid "creation date"
+msgstr "زمان ساخت"
+
+#: models.py:15
+msgid "checked out"
+msgstr "‍پرداخت"
+
+#: models.py:19
+msgid "cart"
+msgstr "سبد خرید"
+
+#: models.py:20
+msgid "carts"
+msgstr "سبد خرید"
+
+#: templates/detail.html:13
+msgid "Product"
+msgstr "محصول"
+
+#: templates/detail.html:14
+msgid "Price"
+msgstr "قیمت"
+
+#: templates/detail.html:15 templates/detail.html:27 templates/detail.html:45
+msgid "Remove"
+msgstr "حذف"
+
+#: templates/detail.html:33 templates/detail.html:50
+msgid "Total"
+msgstr "مجموع"
+
+#: templates/detail.html:59
+msgid "Checkout"
+msgstr "پرداخت"
+
+#: templates/detail.html:63
+msgid "You're cart is empty at the moment"
+msgstr "سبد خرید شما در حال حاضر خالی است"
+
+#: views.py:30
+msgid "Already added"
+msgstr "این محصول در سبد خرید شما موجود است"
+
+#: views.py:32
+msgid "Product added successfully"
+msgstr "محصول با موفقیت به سبد خرید اضافه شد"
+
+#: views.py:83
+msgid "Product removed successfully from your cart"
+msgstr "محصول با موفقیت از سبد خرید حذف شد"

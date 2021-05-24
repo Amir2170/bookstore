@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.contrib.messages import get_messages
+from django.http import HttpResponse, Http404
+from django.http import FileResponse
+import os
 
 from .models import Category, Product, Review
+from bookstore_project import settings
 
 
 def home(request):
@@ -34,4 +38,18 @@ def category(request, slug):
         'sub_categories': sub_categories,
         'products': products,
         }
+    )
+
+
+def download(request, slug):
+    referer = request.META.get('HTTP_REFERER')
+    if not referer:
+        raise Http404
+    
+    product = Product.objects.get(slug=slug)
+    
+    return FileResponse(
+        open(product.upload.path, 'rb'),
+        as_attachment=True, 
+        filename= product.name + '.pdf'
     )

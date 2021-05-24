@@ -15,49 +15,46 @@
             <th scope="col">{% translate "Remove" %}</th>
         </tr>
         </thead>
-        <tbody>
-            {% if user.is_authenticated %}
-                
-                {% for product in cart.products.all %}
-                
-                <tr>
+        <tbody> 
+        {% if user.is_authenticated %}
+
+            {% for product in cart.products.all %}
+            
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}T</td>
+                <td><a href="{% url 'cart:remove' product.slug %}">{% translate "Remove" %}</a></td>
+                <td><a href="{% url 'shop:download' product.slug %}">{% translate "Download" %}</a></td>
+            </tr>
+            
+            {% endfor %}
+            
+            <tr>
+                <td>{% translate "Total" %}</td>
+                <td colspan="4"></td>
+                <td>{{ cart.total_price }}</td>
+            </tr>
+        {% else %}
+            {% for product_name, price_dict in cart.items %}          
+                <tr>   
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}T</td>
-                    <td><a href="{% url 'cart:remove' product.slug %}">{% translate "Remove" %}</a></td>
+                    <td>{{ product_name }}</td>
+                    <td>{{ price_dict.price }}T</td>
+                    <td><a href="{% url 'cart:remove' product_name %}">{% translate "Remove" %}</a></td>
+                    <td><a href="{% url 'sho:download' product_name %}">{% translate "Download" %}</a></td>
                 </tr>
-                
-                {% endfor %}
-                
+            {% endfor %}
                 <tr>
+                    {% cart_total_price as total_price%}
                     <td>{% translate "Total" %}</td>
                     <td colspan="4"></td>
-                    <td>{{ cart.total_price }}</td>
+                    <td>{{ total_price }}T</td>
                 </tr>
-            
-            {% else %}
-                
-                {% for product_name, price_dict in cart.items %}          
-                    <tr>   
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ product_name }}</td>
-                        <td>{{ price_dict.price }}T</td>
-                        <td><a href="{% url 'cart:remove' product_name %}">{% translate "Remove" %}</a></td>
-                    </tr>
-                {% endfor %}
-                    <tr>
-                        {% cart_total_price as total_price%}
-                        <td>{% translate "Total" %}</td>
-                        <td colspan="4"></td>
-                        <td>{{ total_price }}T</td>
-                    </tr>
-            
-            {% endif %}
-        
+        {% endif %}
         </tbody>
     </table>
     <a href="#" class="btn btn-primary">{% translate "Checkout" %}</a>
-
 {% else %}
 
     <p>{% translate "You're cart is empty at the moment" %}
